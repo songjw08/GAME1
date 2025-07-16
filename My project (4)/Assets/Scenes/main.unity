@@ -151028,9 +151028,17 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -16.55
       objectReference: {fileID: 0}
+    - target: {fileID: 1606162307601535691, guid: 365989104bab89047b810e46a38f7798, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 21280
+      objectReference: {fileID: 0}
     - target: {fileID: 1705116895852751168, guid: 365989104bab89047b810e46a38f7798, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 3749549577200186131, guid: 365989104bab89047b810e46a38f7798, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 1047
       objectReference: {fileID: 0}
     - target: {fileID: 4218279917462432828, guid: 365989104bab89047b810e46a38f7798, type: 3}
       propertyPath: m_AnchorMax.y
@@ -151115,6 +151123,22 @@ PrefabInstance:
     - target: {fileID: 6584717517533805395, guid: 365989104bab89047b810e46a38f7798, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -18.42775
+      objectReference: {fileID: 0}
+    - target: {fileID: 7156142527782341216, guid: 365989104bab89047b810e46a38f7798, type: 3}
+      propertyPath: walkSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7156142527782341216, guid: 365989104bab89047b810e46a38f7798, type: 3}
+      propertyPath: jumpHeight
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7156142527782341216, guid: 365989104bab89047b810e46a38f7798, type: 3}
+      propertyPath: crouchSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7156142527782341216, guid: 365989104bab89047b810e46a38f7798, type: 3}
+      propertyPath: sprintSpeed
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8321418679954577395, guid: 365989104bab89047b810e46a38f7798, type: 3}
       propertyPath: m_SizeDelta.x
