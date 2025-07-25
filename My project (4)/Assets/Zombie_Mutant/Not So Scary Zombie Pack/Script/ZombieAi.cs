@@ -3,12 +3,9 @@ using UnityEngine.AI;
 
 public class ZombieAI : MonoBehaviour
 {
-    public Transform player;
-    public float detectionRange = 15f;
-    public float attackRange = 2f;
-
     private NavMeshAgent agent;
     private Animator animator;
+    private bool isMoving = false;
 
     void Start()
     {
@@ -16,24 +13,19 @@ public class ZombieAI : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
+    public void SetTargetPosition(Vector3 position)
+    {
+        agent.SetDestination(position);
+        animator.SetBool("isWalking", true);
+        isMoving = true;
+    }
+
     void Update()
     {
-        float distance = Vector3.Distance(transform.position, player.position);
-
-        if (distance <= detectionRange)
+        if (isMoving && !agent.pathPending && agent.remainingDistance < 0.5f)
         {
-            agent.SetDestination(player.position);
-            animator.SetBool("isWalking", true);
-
-            if (distance <= attackRange)
-            {
-                animator.SetTrigger("attack");
-            }
-        }
-        else
-        {
-            agent.ResetPath();
             animator.SetBool("isWalking", false);
+            isMoving = false;
         }
     }
 }
