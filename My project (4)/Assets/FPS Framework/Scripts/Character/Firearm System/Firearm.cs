@@ -207,12 +207,13 @@ namespace Akila.FPSFramework
         public Action onCasingThrown;
 
         private bool isPreviouslyReloading;
-
-
+        private NoiseEmitter noiseEmitter;
+        public float gunshotRadius = 25f;
         protected override void Start()
         {
             // Call the base class Start method to ensure any inherited initialization is performed.
             base.Start();
+            noiseEmitter = GetComponent<NoiseEmitter>();
 
             // Check if a valid preset is provided
             if (preset == null)
@@ -876,8 +877,13 @@ namespace Akila.FPSFramework
                 fireTailAudio?.PlayOneShot();
             }
 
+
+            // 총소리 감지 이벤트 발행
+            noiseEmitter?.EmitNoise(gunshotRadius); 
+
             // Throw casing after firing
             ThrowCasing();
+
         }
 
         /// <summary>
