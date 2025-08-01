@@ -26,7 +26,7 @@ namespace Akila.FPSFramework
         [HideInInspector] public bool ignoreGlobalScale = false;
         [HideInInspector] public bool sticky = false;
         [HideInInspector] public bool damageable = false;
-         public float health = 25;
+        public float health = 25;
         [HideInInspector] public bool exlopeAfterDelay;
         [HideInInspector] public bool destroyOnExplode = true;
         [HideInInspector] public float clearDelay = 60;
@@ -75,11 +75,13 @@ namespace Akila.FPSFramework
 
         public GameObject sourcePlayer;
 
+        public Action<Explosive> OnExploded;
+
         private void Start()
         {
             maxHealth = health;
             if (exlopeAfterDelay) Explode(delay);
-            
+
             rb = GetComponent<Rigidbody>();
         }
 
@@ -138,9 +140,9 @@ namespace Akila.FPSFramework
         public void Explode()
         {
             if (exploded) return;
-            
+
             onExplode?.Invoke();
-            
+
             exploded = true;
 
             Collider[] nearColliders = Physics.OverlapSphere(transform.position, deathRadius * scale, layerMask);
@@ -194,7 +196,7 @@ namespace Akila.FPSFramework
                     controller.cameraManager.ShakeCameras(cameraShake * inversedPercentage);
 
                     if (GamepadManager.Instance) GamepadManager.Instance.BeginVibration(1, 1, 0.8f);
-                    
+
                     if (audioLowPassFilter)
                     {
                         controller.audioFiltersManager.SetLowPass(lowPassCutoffFrequency * distanceFromPlayer / damageRadius * scale, 1000 * Time.deltaTime);
@@ -204,9 +206,10 @@ namespace Akila.FPSFramework
             }
 
             if (destroyOnExplode && isActive) Destroy(gameObject);
+            OnExploded?.Invoke(this);
         }
 
-        public void InvokeCallbacks(GameObject sourcePlayer, RaycastHit hit,Vector3 origin, Vector3 direction, Transform transform)
+        public void InvokeCallbacks(GameObject sourcePlayer, RaycastHit hit, Vector3 origin, Vector3 direction, Transform transform)
         {
             HitInfo hitInfo = new HitInfo(sourcePlayer, hit, origin, direction);
 
@@ -262,7 +265,7 @@ namespace Akila.FPSFramework
                     finalDamage *= damageMultiplier;
 
                     if (kill) finalDamage = damageable.maxHealth;
-                    
+
                     damageable.damageDirection = (damageable.transform.position - transform.position).normalized * force;
 
                     damageable.Damage(finalDamage, damageSource.gameObject);
@@ -271,7 +274,7 @@ namespace Akila.FPSFramework
                 }
             }
 
-            if(obj.TryGetComponent<Rigidbody>(out Rigidbody rb))
+            if (obj.TryGetComponent<Rigidbody>(out Rigidbody rb))
             {
                 rb.AddExplosionForce(force, transform.position, damageRadius, 1, ForceMode.VelocityChange);
             }
@@ -363,10 +366,10 @@ namespace Akila.FPSFramework
 
             }
         }
-        
+
         public void Damage(float amount, GameObject damageSource)
         {
-            if(!damageable) return;
+            if (!damageable) return;
 
             health -= amount;
             this.damageSource = damageSource;
@@ -391,4 +394,9 @@ namespace Akila.FPSFramework
         Standard,
         RayTracking
     }
+
+
+    
+
+
 }
