@@ -810,11 +810,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   acceleration: 0.12
-  walkSpeed: 5
-  crouchSpeed: 3
-  sprintSpeed: 10
+  walkSpeed: 4
+  crouchSpeed: 2
+  sprintSpeed: 6
   tacticalSprintSpeed: 11
-  jumpHeight: 6
+  jumpHeight: 3
   crouchHeight: 1.5
   stepInterval: 7
   slideDownSlopes: 1
@@ -2030,7 +2030,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 59711
+    m_Bits: 1047
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -2452,7 +2452,7 @@ Camera:
   m_Depth: 1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 22016
+    m_Bits: 21280
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
