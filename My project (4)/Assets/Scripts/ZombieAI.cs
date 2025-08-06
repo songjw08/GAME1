@@ -17,6 +17,7 @@ public class ZombieAI : MonoBehaviour
     private Transform player;
     private float lastSeenTime;
     private Vector3 lastHeardPos;
+    private bool isAggroed = false;// 한번 감지되면 true로 고정
 
     void Awake()
     {
@@ -53,11 +54,7 @@ public class ZombieAI : MonoBehaviour
                 break;
 
             case State.Chase:
-                if (!player)
-                {
-                    if (Time.time - lastSeenTime > loseSightTime) state = State.Idle;
-                    return;
-                }
+                if (!player) return;
 
                 agent.SetDestination(player.position);
 
@@ -65,20 +62,7 @@ public class ZombieAI : MonoBehaviour
                 if (dist <= attackRange)
                 {
                     state = State.Attack;
-                    // 공격 애니메이션 트리거
-                }
-                else
-                {
-                    // 아직 추격
-                }
-
-                if (Time.time - lastSeenTime > loseSightTime)
-                {
-                    // 마지막 본 곳으로 이동 후 Investigate로 전환하는 로직도 가능
-                    state = State.Investigate;
-                    lastHeardPos = player.position;
-                    agent.SetDestination(lastHeardPos);
-                    player = null;
+                    return;
                 }
                 break;
 
@@ -99,13 +83,13 @@ public class ZombieAI : MonoBehaviour
     {
         player = p;
         lastSeenTime = Time.time;
-        state = State.Chase;
+        isAggroed = true;              // 어그로 획득
+        state = State.Chase;          // 바로 추적
     }
 
     void HandleHeard(Vector3 pos)
     {
-        // 이미 Chase 중이면 무시하거나, 시야 안이라면 우선 순위: Chase > Investigate
-        if (state == State.Chase) return;
+        if (isAggroed) return;
 
         lastHeardPos = pos;
         agent.SetDestination(lastHeardPos);

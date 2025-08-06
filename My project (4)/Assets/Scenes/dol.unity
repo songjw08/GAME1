@@ -262,7 +262,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1705116895852751168, guid: 365989104bab89047b810e46a38f7798, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1475727423}
   m_SourcePrefab: {fileID: 100100000, guid: 365989104bab89047b810e46a38f7798, type: 3}
 --- !u!1 &766006726
 GameObject:
@@ -588,6 +591,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1475727411 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1705116895852751168, guid: 365989104bab89047b810e46a38f7798, type: 3}
+  m_PrefabInstance: {fileID: 498886608}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1475727423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1475727411}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d784b10842c93024385e40cd3a816640, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &9124605987519482
 GameObject:
   m_ObjectHideFlags: 0
@@ -1373,6 +1393,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Assault Rifle_1
       objectReference: {fileID: 0}
+    - target: {fileID: 395104231899459405, guid: bbabec215dfafb844b5dfd983988a7d0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1612,7 +1636,7 @@ Transform:
   m_GameObject: {fileID: 4198877094152369531}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.4579356, y: 0.00000011920929, z: -7.989156}
+  m_LocalPosition: {x: 26, y: 0.00000011920929, z: -7.989156}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1727,9 +1751,9 @@ GameObject:
   m_Component:
   - component: {fileID: 3534965982211190721}
   - component: {fileID: 7489085959891613115}
+  - component: {fileID: 7489085959891613117}
   - component: {fileID: 7489085959891613119}
   - component: {fileID: 7489085959891613118}
-  - component: {fileID: 7489085959891613117}
   - component: {fileID: 7489085959891613116}
   m_Layer: 0
   m_Name: SKM_Zombie_Mutant
@@ -2538,7 +2562,7 @@ MonoBehaviour:
     m_Bits: 0
   playerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   gunshotRadius: 25
   runRadius: 15
   walkRadius: 6
