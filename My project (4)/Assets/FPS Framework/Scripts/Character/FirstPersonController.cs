@@ -97,6 +97,7 @@ namespace Akila.FPSFramework
         float ICharacterController.sprintSpeed { get => sprintSpeed; }
         float ICharacterController.walkSpeed { get => walkSpeed; }
         float ICharacterController.tacticalSprintSpeed { get => tacticalSprintSpeed; }
+        private NoiseEmitter noiseEmitter;
 
         float ICharacterController.sensitivity
         {
@@ -209,7 +210,7 @@ namespace Akila.FPSFramework
 
             //setup nesscary values
             controller = GetComponent<CharacterController>();
-
+            noiseEmitter = GetComponent<NoiseEmitter>();
             ResetSpeed();
 
             //get defaults
@@ -362,6 +363,11 @@ namespace Akila.FPSFramework
                 Audio currentFootStepAudio = footStepsAudio[currentFootStepIndex];
 
                 currentFootStepAudio.PlayOneShot();
+                if (!isCrouching)
+                {
+                    float noiseRadius = CharacterInput.sprintInput ? 15f : 6f; // ¿¹: ¶Ù±â=15, °È±â=6
+                    noiseEmitter?.EmitNoise(noiseRadius);
+                }
             }
         }
 
