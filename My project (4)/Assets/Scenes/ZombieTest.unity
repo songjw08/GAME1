@@ -728,7 +728,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a8fc9f0bb238c2479666a3fdbf2104e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackRange: 1.8
+  attackRange: 5
   loseSightTime: 3
   investigateStopDistance: 1.5
 --- !u!195 &1847063368

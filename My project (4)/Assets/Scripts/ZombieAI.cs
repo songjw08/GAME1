@@ -18,11 +18,12 @@ public class ZombieAI : MonoBehaviour
     private float lastSeenTime;
     private Vector3 lastHeardPos;
     private bool isAggroed = false;// 한번 감지되면 true로 고정
-
+    private Animator animator;
     void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
         perception = GetComponent<ZombiePerception>();
+        animator = GetComponent<Animator>();
     }
 
     void OnEnable()
@@ -39,21 +40,36 @@ public class ZombieAI : MonoBehaviour
 
     void Update()
     {
+        if (agent.isStopped)
+        {
+            // 이동 정지
+            agent.velocity = Vector3.zero;
+
+            // 회전도 막고 싶다면
+            agent.angularSpeed = 0f;
+
+            // 혹시라도 Animator에서 걷기 애니메이션 꺼야 한다면:
+            animator.SetBool("isWalking", false);
+        }
         switch (state)
         {
             case State.Idle:
-                // 대기 애니메이션 등
+                animator.SetBool("isWalking", false);
+                animator.SetBool("isAttacking", false);
                 break;
 
             case State.Investigate:
+                animator.SetBool("isWalking", true);
+                animator.SetBool("isAttacking", false);
                 if (Vector3.Distance(transform.position, lastHeardPos) <= investigateStopDistance)
                 {
-                    // 도착해서 둘러보기 -> 일정 시간 후 Idle로
                     StartCoroutine(BackToIdleAfter(2f));
                 }
                 break;
 
             case State.Chase:
+                animator.SetBool("isWalking", true);
+                animator.SetBool("isAttacking", false);
                 if (!player) return;
 
                 agent.SetDestination(player.position);
@@ -67,16 +83,28 @@ public class ZombieAI : MonoBehaviour
                 break;
 
             case State.Attack:
-                // 공격 애니메이션 이벤트에서 실제 데미지 처리
+                agent.isStopped = true;
+                animator.SetBool("isWalking", false);
+                animator.SetBool("isAttacking", true); // 공격 애니메이션 실행
+
                 if (player)
                 {
                     float d = Vector3.Distance(transform.position, player.position);
                     if (d > attackRange)
+                    {
                         state = State.Chase;
+                        animator.SetBool("isAttacking", false); // 공격 종료
+                    }
                 }
-                else state = State.Idle;
+                else
+                {
+                    state = State.Idle;
+                    animator.SetBool("isAttacking", false); // 공격 종료
+                    agent.isStopped = false;
+                }
                 break;
         }
+        
     }
 
     void HandlePlayerSpotted(Transform p)
