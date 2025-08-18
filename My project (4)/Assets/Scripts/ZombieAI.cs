@@ -7,7 +7,7 @@ public class ZombieAI : MonoBehaviour
 {
     public enum State { Idle, Investigate, Chase, Attack }
 
-    public float attackRange = 1.8f;
+    public float attackRange = 3.0f;
     public float loseSightTime = 3f; // 시야에서 놓치면 이 시간 뒤 Idle/Investigate로 전환
     public float investigateStopDistance = 1.5f;
 
@@ -40,17 +40,7 @@ public class ZombieAI : MonoBehaviour
 
     void Update()
     {
-        if (agent.isStopped)
-        {
-            // 이동 정지
-            agent.velocity = Vector3.zero;
-
-            // 회전도 막고 싶다면
-            agent.angularSpeed = 0f;
-
-            // 혹시라도 Animator에서 걷기 애니메이션 꺼야 한다면:
-            animator.SetBool("isWalking", false);
-        }
+        
         switch (state)
         {
             case State.Idle:
@@ -82,10 +72,10 @@ public class ZombieAI : MonoBehaviour
                 }
                 break;
 
-            case State.Attack:
-                agent.isStopped = true;
+           case State.Attack:
+                
                 animator.SetBool("isWalking", false);
-                animator.SetBool("isAttacking", true); // 공격 애니메이션 실행
+                animator.SetBool("isAttacking", true);
 
                 if (player)
                 {
@@ -93,14 +83,15 @@ public class ZombieAI : MonoBehaviour
                     if (d > attackRange)
                     {
                         state = State.Chase;
-                        animator.SetBool("isAttacking", false); // 공격 종료
+                        animator.SetBool("isAttacking", false);
+                        
                     }
                 }
                 else
                 {
                     state = State.Idle;
-                    animator.SetBool("isAttacking", false); // 공격 종료
-                    agent.isStopped = false;
+                    animator.SetBool("isAttacking", false);
+                    
                 }
                 break;
         }
