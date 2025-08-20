@@ -7,7 +7,7 @@ public class ZombieAI : MonoBehaviour
 {
     public enum State { Idle, Investigate, Chase, Attack }
 
-    public float attackRange = 3.0f;
+    public float attackRange = 6.0f;
     public float loseSightTime = 3f; // 시야에서 놓치면 이 시간 뒤 Idle/Investigate로 전환
     public float investigateStopDistance = 1.5f;
 
