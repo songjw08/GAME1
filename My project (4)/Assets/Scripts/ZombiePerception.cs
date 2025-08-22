@@ -87,6 +87,27 @@ public class ZombiePerception : MonoBehaviour
 
     Transform GetEyes() => eyes ? eyes : transform;
 
+    public bool IsInFOV(Transform target)
+    {
+        Vector3 dirToTarget = (target.position - GetEyes().position).normalized;
+        float distance = Vector3.Distance(GetEyes().position, target.position);
+
+        if (distance > visionRadius)
+            return false;
+
+        float angle = Vector3.Angle(transform.forward, dirToTarget);
+        if (angle > visionAngle * 0.5f)
+            return false;
+
+        if (Physics.Raycast(GetEyes().position, dirToTarget, out RaycastHit hit, distance, ~0, QueryTriggerInteraction.Ignore))
+        {
+            if (((1 << hit.collider.gameObject.layer) & playerMask) != 0)
+                return true;
+        }
+
+        return false;
+    }
+
 #if UNITY_EDITOR
     void OnDrawGizmosSelected()
     {
