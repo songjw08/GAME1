@@ -1,3 +1,4 @@
+using Akila.FPSFramework;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
@@ -19,6 +20,17 @@ public class ZombieAI : MonoBehaviour
     private Vector3 lastHeardPos;
     private bool isAggroed = false;// 한번 감지되면 true로 고정
     private Animator animator;
+
+    // 공격 파라미터
+    [SerializeField] private float attackDamage = 20f;      // 1회 공격 데미지
+    [SerializeField] private float attackHitRadius = 0.7f;  // 히트 판정 반경
+    [SerializeField] private Transform attackPoint;         // 손/입 등 임팩트 지점(빈 오브젝트)
+                                                            // 보조 판정(스피어를 살짝 빗나간 경우)에 허용할 최대 거리
+                                                            // 너무 쉽게 맞지 않도록 작은 값으로 시작해서 조절
+    [SerializeField] private float fallbackDistance = 0.6f; // meters
+
+    private bool hasDealtDamageThisSwing; // 한 번의 스윙에서 중복 히트 방지
+
     void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -110,6 +122,56 @@ public class ZombieAI : MonoBehaviour
         }
 
     }
+    public void OnAttackStart()
+    {
+        hasDealtDamageThisSwing = false;
+    }
+
+    public void OnAttackHit()
+    {
+        if (hasDealtDamageThisSwing) return;
+        if (player == null) return;
+
+        Vector3 origin = attackPoint
+            ? attackPoint.position
+            : transform.position + transform.forward * 0.8f + Vector3.up * 1.0f;
+
+        // 1차: 오버랩 스피어로 맞은 콜라이더 중 플레이어 트랜스폼 계통만 필터
+        Collider[] hits = Physics.OverlapSphere(origin, attackHitRadius, ~0, QueryTriggerInteraction.Ignore);
+        for (int i = 0; i < hits.Length; i++)
+        {
+            Transform t = hits[i].transform;
+            if (t == player || t.IsChildOf(player))
+            {
+                var dmg = t.GetComponentInParent<Damageable>();
+                if (dmg != null)
+                {
+                    dmg.Damage(attackDamage, gameObject);
+                    hasDealtDamageThisSwing = true;
+                    return;
+                }
+            }
+        }
+
+        // 2차: 레이어를 쓰지 않으므로 거리 기반 보조 판정
+        float dist = Vector3.Distance(origin, player.position);
+        if (dist <= fallbackDistance)
+        {
+            var dmg = player.GetComponentInParent<Akila.FPSFramework.Damageable>();
+            if (dmg != null)
+            {
+                dmg.Damage(attackDamage, gameObject);
+                hasDealtDamageThisSwing = true;
+            }
+        }
+
+    }
+
+    public void OnAttackEnd()
+    {
+        hasDealtDamageThisSwing = false;
+    }
+
     void RotateTowards(Vector3 targetPosition)
     {
         Vector3 direction = (targetPosition - transform.position).normalized;
@@ -153,7 +215,12 @@ public class ZombieAI : MonoBehaviour
 
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, attackRange);
-
+        if (attackPoint)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(attackPoint.position, attackHitRadius);
+        }
     }
+
 #endif
 }

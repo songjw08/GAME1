@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.Events;
 using UnityEngine;
 using System;
+using Akila.FPSFramework; 
 
 namespace Akila.FPSFramework
 {
