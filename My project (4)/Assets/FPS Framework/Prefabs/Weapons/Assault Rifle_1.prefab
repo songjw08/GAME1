@@ -515,6 +515,7 @@ MonoBehaviour:
     OnFireModeChange:
       m_PersistentCalls:
         m_Calls: []
+  gunshotRadius: 25
 --- !u!114 &2052470699772223401
 MonoBehaviour:
   m_ObjectHideFlags: 0
