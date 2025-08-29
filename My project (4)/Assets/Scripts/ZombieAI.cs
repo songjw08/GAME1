@@ -191,6 +191,31 @@ public class ZombieAI : MonoBehaviour
         isAggroed = true;              // 어그로 획득
         state = State.Chase;          // 바로 추적
     }
+    public void ForceAggro(Transform target)
+    {
+        isAggroed = true;
+        if (target != null)
+        {
+            player = target;
+            lastSeenTime = Time.time;
+        }
+
+        // 바로 추격 상태로 전환
+        state = State.Chase;
+
+        // 이동/애니메이션 상태 정리
+        if (animator)
+        {
+            animator.applyRootMotion = false;
+            animator.SetBool("isAttacking", false);
+            animator.SetBool("isWalking", true);
+        }
+        if (agent)
+        {
+            agent.isStopped = false;
+            if (player) agent.SetDestination(player.position);
+        }
+    }
 
     void HandleHeard(Vector3 pos)
     {

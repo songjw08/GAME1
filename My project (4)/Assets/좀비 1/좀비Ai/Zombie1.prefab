@@ -2684,6 +2684,7 @@ GameObject:
   - component: {fileID: 4404537099099162031}
   - component: {fileID: 1837932750184559800}
   - component: {fileID: 768668928535402518}
+  - component: {fileID: 4815065826936773255}
   m_Layer: 0
   m_Name: Zombie1
   m_TagString: Untagged
@@ -4643,6 +4644,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &4815065826936773255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4127960938634840145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a67a0d553d4d60348842d1f877eeb0c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4466354536818247646
 GameObject:
   m_ObjectHideFlags: 0
