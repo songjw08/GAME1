@@ -2673,7 +2673,6 @@ GameObject:
   - component: {fileID: 6750515705345667890}
   - component: {fileID: 3533916670825926288}
   - component: {fileID: 4493772877525035269}
-<<<<<<< Updated upstream
   - component: {fileID: 5319965676995580352}
   - component: {fileID: 5030201111935878366}
   - component: {fileID: 8218321514678899184}
@@ -2686,14 +2685,6 @@ GameObject:
   - component: {fileID: 1837932750184559800}
   - component: {fileID: 768668928535402518}
   - component: {fileID: 4815065826936773255}
-=======
-  - component: {fileID: 2926865724607041330}
-  - component: {fileID: 1080287922157653571}
-  - component: {fileID: 7284767930646340568}
-  - component: {fileID: 5217611494735190362}
-  - component: {fileID: 547497934670967472}
-  - component: {fileID: 740566050990012861}
->>>>>>> Stashed changes
   m_Layer: 0
   m_Name: Zombie1
   m_TagString: Untagged
@@ -2711,7 +2702,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.1, y: 1.1, z: 1.1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 583968723497802111}
@@ -2992,26 +2983,16 @@ MonoBehaviour:
   idleAvoidRepeat: 1
   stopOnExitIdle: 1
   chaseSources:
-<<<<<<< Updated upstream
   - {fileID: 5319965676995580352}
   - {fileID: 5030201111935878366}
   - {fileID: 8218321514678899184}
   - {fileID: 4032191660296817319}
   - {fileID: 207794888180076708}
   - {fileID: 1022617231939399271}
-=======
-  - {fileID: 2926865724607041330}
-  - {fileID: 1080287922157653571}
-  - {fileID: 7284767930646340568}
-  - {fileID: 5217611494735190362}
-  - {fileID: 547497934670967472}
-  - {fileID: 740566050990012861}
->>>>>>> Stashed changes
   chaseMinGap: 0.8
   chaseMaxGap: 1.8
   chaseAvoidRepeat: 1
   stopOnExitChase: 1
-<<<<<<< Updated upstream
   attackSources:
   - {fileID: 4482157639867347694}
   - {fileID: 7369887615252068577}
@@ -3031,8 +3012,6 @@ MonoBehaviour:
   chaseMaxDistance: 22
   attackMinDistance: 2
   attackMaxDistance: 10
-=======
->>>>>>> Stashed changes
 --- !u!82 &3572735089221329553
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3609,11 +3588,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-<<<<<<< Updated upstream
 --- !u!82 &5319965676995580352
-=======
---- !u!82 &2926865724607041330
->>>>>>> Stashed changes
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3632,15 +3607,9 @@ AudioSource:
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
-<<<<<<< Updated upstream
   DopplerLevel: 0
   MinDistance: 3
   MaxDistance: 22
-=======
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
->>>>>>> Stashed changes
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -3675,11 +3644,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-<<<<<<< Updated upstream
       value: 1
-=======
-      value: 0
->>>>>>> Stashed changes
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -3719,11 +3684,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-<<<<<<< Updated upstream
 --- !u!82 &5030201111935878366
-=======
---- !u!82 &1080287922157653571
->>>>>>> Stashed changes
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3742,15 +3703,9 @@ AudioSource:
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
-<<<<<<< Updated upstream
   DopplerLevel: 0
   MinDistance: 3
   MaxDistance: 22
-=======
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
->>>>>>> Stashed changes
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -3785,11 +3740,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-<<<<<<< Updated upstream
       value: 1
-=======
-      value: 0
->>>>>>> Stashed changes
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -3829,11 +3780,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-<<<<<<< Updated upstream
 --- !u!82 &8218321514678899184
-=======
---- !u!82 &7284767930646340568
->>>>>>> Stashed changes
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3852,15 +3799,9 @@ AudioSource:
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
-<<<<<<< Updated upstream
   DopplerLevel: 0
   MinDistance: 3
   MaxDistance: 22
-=======
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
->>>>>>> Stashed changes
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -3895,11 +3836,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-<<<<<<< Updated upstream
       value: 1
-=======
-      value: 0
->>>>>>> Stashed changes
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -3939,11 +3876,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-<<<<<<< Updated upstream
 --- !u!82 &4032191660296817319
-=======
---- !u!82 &5217611494735190362
->>>>>>> Stashed changes
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3962,15 +3895,9 @@ AudioSource:
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
-<<<<<<< Updated upstream
   DopplerLevel: 0
   MinDistance: 3
   MaxDistance: 22
-=======
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
->>>>>>> Stashed changes
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -4005,11 +3932,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-<<<<<<< Updated upstream
       value: 1
-=======
-      value: 0
->>>>>>> Stashed changes
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -4049,11 +3972,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-<<<<<<< Updated upstream
 --- !u!82 &207794888180076708
-=======
---- !u!82 &547497934670967472
->>>>>>> Stashed changes
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4072,15 +3991,9 @@ AudioSource:
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
-<<<<<<< Updated upstream
   DopplerLevel: 0
   MinDistance: 3
   MaxDistance: 22
-=======
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
->>>>>>> Stashed changes
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -4115,11 +4028,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-<<<<<<< Updated upstream
       value: 1
-=======
-      value: 0
->>>>>>> Stashed changes
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -4159,11 +4068,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-<<<<<<< Updated upstream
 --- !u!82 &1022617231939399271
-=======
---- !u!82 &740566050990012861
->>>>>>> Stashed changes
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4182,15 +4087,9 @@ AudioSource:
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
-<<<<<<< Updated upstream
   DopplerLevel: 0
   MinDistance: 3
   MaxDistance: 22
-=======
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
->>>>>>> Stashed changes
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -4225,11 +4124,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-<<<<<<< Updated upstream
       value: 1
-=======
-      value: 0
->>>>>>> Stashed changes
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -4269,7 +4164,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-<<<<<<< Updated upstream
 --- !u!82 &4482157639867347694
 AudioSource:
   m_ObjectHideFlags: 0
@@ -4762,8 +4656,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a67a0d553d4d60348842d1f877eeb0c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-=======
->>>>>>> Stashed changes
 --- !u!1 &4466354536818247646
 GameObject:
   m_ObjectHideFlags: 0
